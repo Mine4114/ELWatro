@@ -64,6 +64,10 @@ end
 -- load the jokers
 if true then
     assert(SMODS.load_file("jokers/fella.lua"))()
+    assert(SMODS.load_file("jokers/bluefella.lua"))()
+    assert(SMODS.load_file("jokers/whitefella.lua"))()
+    assert(SMODS.load_file("jokers/slatefella.lua"))()
+    assert(SMODS.load_file("jokers/greenfella.lua"))()
     assert(SMODS.load_file("jokers/diolch.lua"))()
     assert(SMODS.load_file("jokers/sawmark.lua"))()
 end
@@ -84,7 +88,10 @@ end
 
 
 assert(SMODS.load_file("rarities.lua"))()
+assert(SMODS.load_file("malverk_compat.lua"))()
 
+--load sounds
+assert(SMODS.load_file("sounds.lua"))()
 SMODS.ObjectType({
     key = "elwatro_food",
     cards = {
@@ -104,6 +111,10 @@ SMODS.ObjectType({
     key = "elwatro_elwatro_jokers",
     cards = {
         ["j_elwatro_fella"] = true,
+        ["j_elwatro_bluefella"] = true,
+        ["j_elwatro_whitefella"] = true,
+        ["j_elwatro_slatefella"] = true,
+        ["j_elwatro_greenfella"] = true,
         ["j_elwatro_diolch"] = true,
         ["j_elwatro_sawmark"] = true
     },

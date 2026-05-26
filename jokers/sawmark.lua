@@ -11,7 +11,7 @@ SMODS.Joker{ --Sawmark
     loc_txt = {
         ['name'] = 'Sawmark',
         ['text'] = {
-            [1] = '{C:green} in 2 5{} ha  e t  re o e  ll  {X:chips,C:white}ch p {}',
+            [1] = '{C:green} in 2 5{} ha  e t  re o e {X:chips,C:white}ch p {}',
             [2] = 'Le  es a  er {C:green}3{}  nt s'
         },
         ['unlock'] = {
@@ -19,8 +19,8 @@ SMODS.Joker{ --Sawmark
         }
     },
     pos = {
-        x = 4,
-        y = 0
+        x = 2,
+        y = 1
     },
     display_size = {
         w = 71 * 1, 
@@ -36,8 +36,8 @@ SMODS.Joker{ --Sawmark
     atlas = 'CustomJokers',
     pools = { ["elwatro_elwatro_jokers"] = true },
     soul_pos = {
-        x = 5,
-        y = 0
+        x = 3,
+        y = 1
     },
     in_pool = function(self, args)
         return (
@@ -62,7 +62,7 @@ SMODS.Joker{ --Sawmark
         if context.individual and context.cardarea == G.play  then
             if true then
                 if SMODS.pseudorandom_probability(card, 'group_0_1a07a38a', 1, card.ability.extra.odds, 'j_elwatro_sawmark', false) then
-                    SMODS.calculate_effect({x_chips = 0}, card)
+                    SMODS.calculate_effect({x_chips = 0.5}, card)
                 end
             end
         end

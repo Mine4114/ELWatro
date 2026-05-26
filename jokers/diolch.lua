@@ -9,15 +9,15 @@ SMODS.Joker{ --diolch
     loc_txt = {
         ['name'] = 'diolch',
         ['text'] = {
-            [1] = '{C:green}1 in 65535{} chance to create a {C:enhanced}Negative{} {C:attention}Fella{} at the end of a round'
+            [1] = '{C:green}1 in 65535{} chance to create a random {C:enhanced}Negative{} {C:attention}Fella{} at the end of a round'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
         }
     },
     pos = {
-        x = 2,
-        y = 0
+        x = 0,
+        y = 1
     },
     display_size = {
         w = 71 * 1, 
@@ -33,8 +33,8 @@ SMODS.Joker{ --diolch
     atlas = 'CustomJokers',
     pools = { ["elwatro_elwatro_jokers"] = true },
     soul_pos = {
-        x = 3,
-        y = 0
+        x = 1,
+        y = 1
     },
     in_pool = function(self, args)
         return (
@@ -59,12 +59,19 @@ SMODS.Joker{ --diolch
         if context.end_of_round and context.game_over == false and context.main_eval  then
             if true then
                 if SMODS.pseudorandom_probability(card, 'group_0_581db2d1', 1, card.ability.extra.odds, 'j_elwatro_diolch', false) then
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            play_sound("elwatro_diolch")
+                            
+                            return true
+                        end,
+                    }))
                     SMODS.calculate_effect({func = function()
                         
                         local created_joker = true
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_elwatro_fella' })
+                                local joker_card = SMODS.add_card({ set = 'Joker', rarity = 'elwatro_fella' })
                                 if joker_card then
                                     joker_card:set_edition("e_negative", true)
                                     

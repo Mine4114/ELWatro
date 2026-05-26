@@ -4,8 +4,7 @@ SMODS.Enhancement {
     pos = { x = 0, y = 0 },
     config = {
         extra = {
-            odds = 255,
-            xmult0 = 1.5
+            odds = 255
         }
     },
     loc_txt = {
@@ -49,11 +48,6 @@ SMODS.Enhancement {
                 end
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = created_joker and localize('k_plus_joker') or nil, colour = G.C.BLUE})
             end
-        end
-        if context.main_scoring and context.cardarea == G.play then
-            return {
-                Xmult = 1.5
-            }
         end
     end
 }

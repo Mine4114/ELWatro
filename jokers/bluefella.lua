@@ -1,20 +1,20 @@
 
-SMODS.Joker{ --Fella
-    key = "fella",
+SMODS.Joker{ --Blue Fella
+    key = "bluefella",
     config = {
         extra = {
             fellacount = 0,
             workingcount = 0,
-            missingcount = 0
+            mult0 = 2
         }
     },
     loc_txt = {
-        ['name'] = 'Fella',
+        ['name'] = 'Blue Fella',
         ['text'] = {
             [1] = '{C:inactive}Hello friend!',
             [2] = 'Friend has message for you!',
             [3] = 'Here is message!{}',
-            [4] = 'This joker provides {X:mult,C:white}x1.5{} for each {C:attention}Missing Card{} in your {C:attention}full deck{}.',
+            [4] = 'This joker provides {C:mult}+2{} Mult.',
             [5] = 'It also provides {X:mult,C:white}x2{} Mult for every other {C:attention}Fella{} you own.',
             [6] = '{C:inactive}That was message!',
             [7] = 'Message sounded important...',
@@ -25,7 +25,7 @@ SMODS.Joker{ --Fella
         }
     },
     pos = {
-        x = 0,
+        x = 2,
         y = 0
     },
     display_size = {
@@ -42,13 +42,13 @@ SMODS.Joker{ --Fella
     atlas = 'CustomJokers',
     pools = { ["elwatro_elwatro_jokers"] = true },
     soul_pos = {
-        x = 1,
+        x = 3,
         y = 0
     },
     
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {card.ability.extra.fellacount, card.ability.extra.workingcount, card.ability.extra.missingcount}}
+        return {vars = {card.ability.extra.fellacount, card.ability.extra.workingcount}}
     end,
     
     calculate = function(self, card, context)
@@ -59,18 +59,14 @@ SMODS.Joker{ --Fella
                 card.ability.extra.workingcount = math.max(0, (card.ability.extra.workingcount) - 1)
                 card.ability.extra.workingcount = (card.ability.extra.workingcount) * 2
                 return {
-                    Xmult = workingcount_value
+                    Xmult = workingcount_value,
+                    mult = 2
+                }
+            else
+                return {
+                    mult = 2
                 }
             end
-        end
-        if context.joker_main then
-            local missingcount = 0
-            for _, playing_card in ipairs(G.playing_cards) do
-                if SMODS.has_enhancement(playing_card, 'm_elwatro_missing') then missingcount = missingcount + 1 end
-            end
-            return {
-                Xmult = 1.5 * missingcount,
-            }
         end
         if (context.end_of_round or context.reroll_shop or context.buying_card or
             context.selling_card or context.ending_shop or context.starting_shop or 
