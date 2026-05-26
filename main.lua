@@ -88,7 +88,7 @@ end
 
 
 assert(SMODS.load_file("rarities.lua"))()
-assert(SMODS.load_file("malverk_compat.lua"))()
+-- assert(SMODS.load_file("malverk_compat.lua"))() -- broken somehow, i do not know how to fix it
 
 --load sounds
 assert(SMODS.load_file("sounds.lua"))()

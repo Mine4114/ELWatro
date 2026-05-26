@@ -58,19 +58,23 @@ SMODS.Joker{ --Fella
                 card.ability.extra.workingcount = card.ability.extra.fellacount
                 card.ability.extra.workingcount = math.max(0, (card.ability.extra.workingcount) - 1)
                 card.ability.extra.workingcount = (card.ability.extra.workingcount) * 2
-                return {
-                    Xmult = workingcount_value
-                }
+                local missingcount = 0
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if SMODS.has_enhancement(playing_card, 'm_elwatro_missing') then missingcount = missingcount + 1 end
+                end
+                if missingcount > 1 then
+                    return {
+                        Xmult = 1.5 * missingcount + workingcount_value,
+                    }
+                else
+                    return {
+                        Xmult = workingcount_value,
+                    }
+                end
             end
         end
         if context.joker_main then
-            local missingcount = 0
-            for _, playing_card in ipairs(G.playing_cards) do
-                if SMODS.has_enhancement(playing_card, 'm_elwatro_missing') then missingcount = missingcount + 1 end
-            end
-            return {
-                Xmult = 1.5 * missingcount,
-            }
+            
         end
         if (context.end_of_round or context.reroll_shop or context.buying_card or
             context.selling_card or context.ending_shop or context.starting_shop or 

@@ -14,7 +14,7 @@ SMODS.Joker{ --Green Fella
             [1] = '{C:inactive}Hello friend!',
             [2] = 'Friend has message for you!',
             [3] = 'Here is message!{}',
-            [4] = 'This joker provides {X:dark_edition,C:white}^1.5{} Mult.',
+            [4] = 'This joker triplicates all listed probabilities.',
             [5] = 'It also provides {X:mult,C:white}x2{} Mult for every other {C:attention}Fella{} you own.',
             [6] = '{C:inactive}That was message!',
             [7] = 'Message sounded important...',
@@ -60,13 +60,12 @@ SMODS.Joker{ --Green Fella
                 card.ability.extra.workingcount = (card.ability.extra.workingcount) * 2
                 return {
                     Xmult = workingcount_value,
-                    e_mult = 1.5
                 }
-            else
-                return {
-                    e_mult = 1.5
-                }
-            end
+        end
+        if context.mod_probability and not context.blueprint then
+            return {
+                numerator = context.numerator * 3
+            }
         end
         if (context.end_of_round or context.reroll_shop or context.buying_card or
             context.selling_card or context.ending_shop or context.starting_shop or 
