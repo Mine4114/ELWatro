@@ -61,6 +61,7 @@ SMODS.Joker{ --Green Fella
                 return {
                     Xmult = workingcount_value,
                 }
+            end
         end
         if context.mod_probability and not context.blueprint then
             return {
