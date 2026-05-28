@@ -17,7 +17,7 @@ if Malverk then
             'j_elwatro_slatefella',
             'j_elwatro_greenfella',
         },
-        display_pos = 'j_elwatro_fella',
+        display_pos = 'j_elwatro_stoneimp',
     })
     TexturePack({
         key = 'elwatro_mossfella',

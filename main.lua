@@ -70,6 +70,7 @@ if true then
     assert(SMODS.load_file("jokers/greenfella.lua"))()
     assert(SMODS.load_file("jokers/diolch.lua"))()
     assert(SMODS.load_file("jokers/sawmark.lua"))()
+    assert(SMODS.load_file("jokers/stoneimp.lua"))()
 end
 -- load the consumables
 if true then
@@ -88,7 +89,7 @@ end
 
 
 assert(SMODS.load_file("rarities.lua"))()
--- assert(SMODS.load_file("malverk_compat.lua"))() -- broken somehow, i do not know how to fix it
+--assert(SMODS.load_file("malverk_compat.lua"))() -- broken somehow, i do not know how to fix it
 
 --load sounds
 assert(SMODS.load_file("sounds.lua"))()
