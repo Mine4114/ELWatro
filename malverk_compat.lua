@@ -1,3 +1,5 @@
+--heya snoopers, this file doesnt work! if you can help out, id be grateful!
+
 if Malverk then
     AltTexture({
         key = 'alt_fella',
